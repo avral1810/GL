@@ -54,3 +54,8 @@ To run using C++ in Mac
 	```bash
 	g++ -std=c++11 -Llib/ -lglew -lglfw -framework OpenGL -framework GLUT -I Headers/  Sources/*.cpp main.cpp 
 	```
+
+	or 
+	```bash
+	make
+	```

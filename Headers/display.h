@@ -16,6 +16,8 @@ class Display
 {
 	GLFWwindow * m_window;
 	int screenHeight, screenWidth;
+	void operator=(const Display& display) {}
+	Display(const Display& display) {}
 
 public:
 	Display(const std::string& name, GLuint, GLuint height);

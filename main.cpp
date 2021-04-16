@@ -6,7 +6,7 @@
 
 int main()
 {
-	Display window("Aviral", 1920, 1080);
+	Display window("Aviral", 800, 600);
 	
 	std::vector<float> colors(4, 0.1f);
 	long counter = 0;
