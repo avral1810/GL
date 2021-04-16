@@ -45,12 +45,12 @@ To run using C++ in Mac
 5. Compile using 
 	
 	```bash
-	g++ main.cpp -std=c++11 -o test.o -c
-	g++ test.o -std=c++11 -lglew -lglfw -framework OpenGL -framework GLUT -o ans 
+	g++ -std=c++11 -c -o display.o -I headers/ main.cpp Sources/*.cpp
+	g++ -std=c++11 -Llib/ -lglew -lglfw -framework OpenGL -framework GLUT -o ans 
 	```
 
 	or in one line
 
 	```bash
-	g++ main.cpp -std=c++11 -lglew -lglfw -framework OpenGL -framework GLUT -o ans
+	g++ -std=c++11 -Llib/ -lglew -lglfw -framework OpenGL -framework GLUT -I Headers/  Sources/*.cpp main.cpp 
 	```
