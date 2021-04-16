@@ -5,7 +5,7 @@ To run using C++ in Mac
 	
 	```bash
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	```bash
+	```
 
 2. Make sure you have xcode command line tools installed
 
@@ -19,9 +19,6 @@ To run using C++ in Mac
 	
 	```bash
 	brew install glfw
-	```
-
-	```bash
 	brew install glew
 	```
 
@@ -32,9 +29,6 @@ To run using C++ in Mac
 	
 	```bash
 	ln -s /usr/Local/Cellar/glfw/{version}/lib/libglfw{version}.dylib
-	```
-
-	```bash
 	ln -s /usr/Local/Cellar/glew/{version}/lib/libglew{version}.dylib
 	```
 
@@ -42,9 +36,6 @@ To run using C++ in Mac
 
 	```bash
 	ln -s /usr/Local/Cellar/glfw/3.2.2/lib/libglfw.3.3.dylib
-	```
-
-	```bash
 	ln -s /usr/Local/Cellar/glfw/2.2.0/lib/libglew.2.2.0.dylib
 	```
 
@@ -55,16 +46,11 @@ To run using C++ in Mac
 	
 	```bash
 	g++ main.cpp -std=c++11 -o test.o -c
-	```
-
-	Link Using 
-
-	```bash
 	g++ test.o -std=c++11 -lglew -lglfw -framework OpenGL -framework GLUT -o ans 
 	```
 
 	or in one line
-	
+
 	```bash
 	g++ main.cpp -std=c++11 -lglew -lglfw -framework OpenGL -framework GLUT -o ans
 	```
