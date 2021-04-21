@@ -23,7 +23,6 @@ Display::Display(const std::string& name, GLuint width, GLuint height)
         kill();
     }
 	glViewport(0, 0, screenWidth, screenHeight);
-
 }
 
 void Display:: clear(float r, float g, float b, float a)
@@ -31,7 +30,6 @@ void Display:: clear(float r, float g, float b, float a)
 	glfwPollEvents();
 	glClearColor(r, g, b, a);
 	glClear(GL_COLOR_BUFFER_BIT);
-	swapBuffers();
 }
 
 void Display:: swapBuffers()
