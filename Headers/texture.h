@@ -10,6 +10,9 @@
 
 #include <iostream>
 #include <string>
+#include <cassert>
+
+#include "stb_image.h"
 
 class Texture
 {

@@ -1,4 +1,4 @@
 CXX=g++
 LDIR=./lib
 GLmake: Sources/*.cpp main.cpp
-	$(CXX)  -lglew -lglfw -framework OpenGL -framework GLUT -I Headers/ -I  Sources/*.cpp main.cpp -o main
+	$(CXX)  -std=c++11 -lglew -lglfw -framework OpenGL -framework GLUT -I Headers/ Sources/*.* main.cpp -o main

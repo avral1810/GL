@@ -9,9 +9,7 @@
 #include "display.h"
 #include "shader.h"
 #include "mesh.h"
-
-// #include "SOIL2.h"
-// #include "Externals/SOIL2/SOIL2.h"
+#include "texture.h"
 
 void colorChanginDisplay(Display& window)
 {
@@ -81,20 +79,32 @@ int main()
 {
 	int width, height;
 	Display display("Aviral", 800, 600);
-	Shader shader("Shaders/core1.vs", "Shaders/core1.fs", true);
-	Vertex vertices[] = {
-		Vertex(glm::vec3(-0.5, -0.5, 0.0)),
-		Vertex(glm::vec3(0.0, 0.5, 0.0)),
-		Vertex(glm::vec3(0.5, -0.5, 0.0))
-	};
+	Shader shader("Shaders/core1.vs", "Shaders/core1.fs", true); 
+	Vertex vertices[] =
+    {
+        //Positions          					// Colors           				// Texture Coords
+        Vertex(	//top
+        	glm::vec3(0.0f,  -0.5f, 0.0f),			
+        	glm::vec3(1.0f, 0.0f, 0.0f),
+        	glm::vec2(0.0f, 0.0f)), 
+        Vertex(//bottom left
+        	glm::vec3(-1.0f, -1.0f, 1.0f),
+        	glm::vec3(0.0f, 1.0f, 0.0f),
+        	glm::vec2(1.0f, 0.0f)), 
+        Vertex(//bottom right
+        	glm::vec3(1.0f, -1.0f, 0.0f),
+        	glm::vec3(0.0f, 0.0f, 1.0f),
+        	glm::vec2(0.0f, 0.0f))
+    };
+ 	Texture texture("Texture-Images/bricks.png");
 	Mesh mesh(vertices, sizeof(vertices)/sizeof(vertices[0]));
 	while(display.alive())
 	{
-		display.clear(0.0, 0.0, 1.0, 1.0);
+		display.clear(1.0, 1.0, 1.0, 0.5);
 		shader.bind();
+		texture.bind(0);
 		mesh.draw();
 		display.swapBuffers();
 	}
-	
 	
 }

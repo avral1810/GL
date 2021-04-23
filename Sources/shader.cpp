@@ -9,7 +9,8 @@ Shader:: Shader(const std::string &filename)
 	
 	for(unsigned int i = 0; i < NUM_SHADERS; i++)
 		glAttachShader(m_program, m_shaders[i]);										//Attach shader to program
-
+	// glBindAttribLocation(m_program, 0, "position");
+	// glBindAttribLocation(m_program, 1, "color");
    	glLinkProgram(m_program);															//Link Program to create shader
    	checkShaderError(m_program, GL_LINK_STATUS, true, "Error linking shader program");
 
