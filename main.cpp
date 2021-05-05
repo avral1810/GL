@@ -10,6 +10,7 @@
 #include "shader.h"
 #include "mesh.h"
 #include "texture.h"
+#include "transform.h"
 
 void colorChanginDisplay(Display& window)
 {
@@ -77,27 +78,42 @@ void triangle(Display& window, Shader& shader)
 
 int main()
 {
-	int width, height;
-	Display display("Aviral", 800, 600);
-	Shader shader("Shaders/core1.vs", "Shaders/core1.fs", true); 
-	Vertex vertices[] =
+	
+    Vertex vertices[] =
     {
         //Positions          					// Colors           				// Texture Coords
-        Vertex(	//top
-        	glm::vec3(0.0f,  -0.5f, 0.0f),			
+        Vertex(	//top left
+        	glm::vec3(-0.25f, 0.25f, 0.0f),			
         	glm::vec3(1.0f, 0.0f, 0.0f),
         	glm::vec2(0.0f, 0.0f)), 
         Vertex(//bottom left
-        	glm::vec3(-1.0f, -1.0f, 1.0f),
+        	glm::vec3(-0.25f, -0.25f, 1.0f),
         	glm::vec3(0.0f, 1.0f, 0.0f),
         	glm::vec2(1.0f, 0.0f)), 
         Vertex(//bottom right
-        	glm::vec3(1.0f, -1.0f, 0.0f),
+        	glm::vec3(0.25f, -0.25f, 0.0f),
         	glm::vec3(0.0f, 0.0f, 1.0f),
+        	glm::vec2(0.0f, 0.0f)),
+        Vertex(//Top right
+        	glm::vec3(0.25f, 0.25f, 0.0f),			
+        	glm::vec3(0.0f, 1.0f, 0.0f),
         	glm::vec2(0.0f, 0.0f))
     };
- 	Texture texture("Texture-Images/bricks.png");
-	Mesh mesh(vertices, sizeof(vertices)/sizeof(vertices[0]));
+    std::vector<Index> indices
+    {
+    	0, 1, 2,
+    	0, 2, 3
+    };
+
+    int height = 600, width = 800;
+    Display display("Aviral", width, height);
+	Shader shader("Shaders/core1.vs", "Shaders/core1.fs", true); 
+ 	
+	Mesh mesh(vertices, indices, sizeof(vertices)/sizeof(vertices[0]));
+
+    Texture texture("Texture-Images/image1.jpg");
+
+
 	while(display.alive())
 	{
 		display.clear(1.0, 1.0, 1.0, 0.5);

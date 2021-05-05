@@ -11,6 +11,17 @@
 #include <string>
 #include <vector>
 
+class Index
+{
+	unsigned int index;
+public:
+	Index(const unsigned int& index)
+	{
+		this->index = index;
+	}
+	inline unsigned int * getIndex(){ return &this->index; }
+};
+
 class Vertex
 {
 	glm::vec3 pos;
@@ -22,6 +33,15 @@ public:
 		this->pos = pos;
 		this->color = color;
 		this->texture = texture;
+		// std:: cout << "colors \n"<<this->color[0]<<" "<<this->color[1]<<" " << this->color[2] << "\n\n";
+	}
+
+	Vertex(const glm::vec3 &pos, const glm::vec3 &color)
+	{
+		this->pos = pos;
+		this->color = color;
+		this->texture[0] = -1;
+		this->texture[1] = -1;
 		// std:: cout << "colors \n"<<this->color[0]<<" "<<this->color[1]<<" " << this->color[2] << "\n\n";
 	}
 	
@@ -44,10 +64,11 @@ class Mesh
 	};
 	GLuint m_vertexArrayObject;
 	GLuint m_vertexArrayBuffers[NUM_BUFFERS];
+	GLuint m_elementBufferObject;
 	unsigned int m_drawCount;
 	
 public:
-	Mesh(Vertex *vertices, unsigned int numVertices);
+	Mesh(Vertex *vertices, std::vector<Index> indicies, unsigned int numVertices);
 	void draw();
 	virtual ~Mesh();
 
